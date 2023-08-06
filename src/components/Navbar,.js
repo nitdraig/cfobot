@@ -25,9 +25,9 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-300">
-              Acerca de
-            </a>
+            <Link href="/principal" className="hover:text-gray-300">
+              CFOBot
+            </Link>
           </li>
           <li>
             <a href="#" className="hover:text-gray-300">

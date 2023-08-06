@@ -1,66 +1,188 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 const ChatComponent = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [response, setResponse] = useState("");
+  const [consulta, setConsulta] = useState("");
+  const [respuesta, setRespuesta] = useState("");
+  const [conversacion, setConversacion] = useState(
+    JSON.parse(localStorage.getItem("conversacion")) || []
+  );
+  const conversacionRef = useRef(null);
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    // Almacenar la conversación en localStorage cada vez que cambie
+    localStorage.setItem("conversacion", JSON.stringify(conversacion));
+  }, [conversacion]);
+
+  const enviarConsulta = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post("/api/consultar-chatgpt", {
-        input: inputValue,
+      const nuevaConversacion = [
+        ...conversacion,
+        { role: "user", content: consulta },
+      ];
+      setConversacion(nuevaConversacion);
+
+      const response = await axios.post("http://localhost:5000/bot/consulta", {
+        message: consulta,
       });
-      setResponse(response.data.output);
+      const generatedResponse = response.data.generatedResponse;
+
+      const conversacionConRespuesta = [
+        ...nuevaConversacion,
+        { role: "bot", content: generatedResponse },
+      ];
+      setConversacion(conversacionConRespuesta);
+
+      setRespuesta(generatedResponse);
+      setConsulta("");
+      // Guardar interacción en la base de datos
+      await axios.post("http://localhost:5000/interacciones/nuevainteraccion", {
+        role: "user",
+        contentUser: consulta,
+        contentBot: generatedResponse,
+      });
     } catch (error) {
-      console.error("Error al consultar ChatGPT", error);
+      console.error(error);
     }
   };
 
-  const handleClear = () => {
-    setInputValue("");
-    setResponse("");
+  const borrarConversacion = () => {
+    setConversacion([]);
+    setRespuesta("");
   };
 
+  useEffect(() => {
+    // Obtener el elemento de conversación utilizando la referencia
+    const conversacionElement = conversacionRef.current;
+
+    // Hacer el desplazamiento automático hacia abajo
+    conversacionElement.scrollTop = conversacionElement.scrollHeight;
+  }, [conversacion]);
   return (
-    <main className="container h-screen">
-      <h2 className="text-center mt-10 text-xl">
-        Soy CFO Consulta lo que gustes
-      </h2>
-      <div className="container content-center">
-        <form onSubmit={handleSubmit}>
-          <label className="">
-            <input
-              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-              placeholder="Search for anything..."
-              type="text"
-              name="search"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-          </label>
-          <div className="text-center mt-4">
-            <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-              Consultar
-            </button>
-            <button
-              type="button"
-              onClick={handleClear}
-              className="ml-2 flex-none rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+    <div
+      className="flex   antialiased text-gray-800"
+      style={{ height: "500px" }}
+    >
+      <div className="flex flex-col flex-auto h-full p-6">
+        <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
+          <div className="flex flex-col h-full overflow-x-auto mb-4">
+            <div
+              ref={conversacionRef}
+              className="flex flex-col h-full overflow-y-auto"
             >
-              Borrar Charla
-            </button>
+              {conversacion.map((mensaje, index) => (
+                <div key={index} className="grid grid-cols-12 gap-y-2">
+                  {mensaje.role === "bot" && (
+                    <div className="col-start-1 col-end-8 p-3 rounded-lg">
+                      <div className="flex flex-row items-center">
+                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
+                          CFO
+                        </div>
+                        <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
+                          <p>{mensaje.content}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="col-start-1 col-end-8 p-3 rounded-lg"></div>
+                  {mensaje.role === "user" && (
+                    <div className="col-start-6 col-end-13 p-3 rounded-lg">
+                      <div className="flex items-center justify-start flex-row-reverse">
+                        <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
+                          You
+                        </div>
+                        <div className="relative mr-3 text-sm bg-indigo-300 py-2 px-4 shadow rounded-xl">
+                          <div
+                            className={`${
+                              mensaje.role === "user"
+                                ? "flex justify-end"
+                                : "flex justify-start"
+                            }`}
+                          >
+                            <div
+                              className={`${
+                                mensaje.role === "user"
+                              } p-2 max-w-md`}
+                            >
+                              <p>{mensaje.content}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>{" "}
+          <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
+            {" "}
+            <div className="flex-grow ml-4">
+              <div className="relative w-full">
+                <form onSubmit={enviarConsulta}>
+                  <label>
+                    <input
+                      type="text"
+                      placeholder="Consultame..."
+                      value={consulta}
+                      onChange={(e) => setConsulta(e.target.value)}
+                      className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+                    />
+                  </label>
+                </form>
+              </div>
+            </div>
+            <div className="ml-4 text-center">
+              <button
+                type="button"
+                onClick={enviarConsulta}
+                className="flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0"
+              >
+                <span>Consultar</span>
+                <span className="ml-2">
+                  <svg
+                    className="w-4 h-4 transform rotate-45 -mt-px"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    ></path>
+                  </svg>
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={borrarConversacion}
+                className="flex items-center justify-center bg-red-700 hover:bg-red-400 rounded-xl text-white px-4 py-1 flex-shrink-0"
+              >
+                <span>Limpiar</span>
+                <span className="ml-2">
+                  <svg
+                    className="w-4 h-4 transform rotate-45 -mt-px"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                    ></path>
+                  </svg>
+                </span>
+              </button>
+            </div>
           </div>
-        </form>
-        {response && (
-          <div className="mt-4 bg-gray-100 p-3 rounded-md">
-            <p className="text-indigo-500 font-semibold">Respuesta:</p>
-            <p>{response}</p>
-          </div>
-        )}
+        </div>
       </div>
-    </main>
+    </div>
   );
 };
 
