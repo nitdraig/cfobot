@@ -106,8 +106,10 @@ const Page = () => {
       <h2 className="text-center mt-10 text-xl">
         Soy CFO Consulta lo que gustes
       </h2>{" "}
-      <ChatComponent />
-      <div className="container content-center"></div>
+      <div className="container content-center">
+        {" "}
+        <ChatComponent />
+      </div>
     </main>
   );
 };
