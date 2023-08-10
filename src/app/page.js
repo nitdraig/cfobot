@@ -1,10 +1,18 @@
 import Presentation from "./../components/Presentation";
-
+import About from "./../components/About";
+import Team from "./../components/Team";
 export default function Home() {
   return (
-    <div className="main h-screen w-screen">
-      <h1 className="text-center mt-10 text-3xl">CFO-ChatBot</h1>
-      <Presentation />
+    <div className="">
+      <div>
+        <Presentation />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="team">
+        <Team />
+      </div>
     </div>
   );
 }

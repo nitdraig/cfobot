@@ -103,11 +103,8 @@ import ChatVisual from "./ChatVisual";
 
 const Page = () => {
   return (
-    <main className="container h-screen">
-      <h2 className="text-center mt-10 text-xl">
-        Soy CFO Consulta lo que gustes
-      </h2>{" "}
-      <div className="container content-center">
+    <main className="container">
+      <div className="container ">
         <ChatComponent />
       </div>
     </main>

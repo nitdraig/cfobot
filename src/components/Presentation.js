@@ -1,28 +1,39 @@
-import Link from "next/link";
+"use client";
+
 import React from "react";
 
+import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 const Presentation = () => {
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push("#about"); // Reemplaza con la ruta correcta de tu componente destino
+  };
   return (
-    <div>
-      <div className="text-center mt-5 ">
-        <h2 className="text-xl">You´re in the jungle baby</h2>
-        <p>Welcome Back</p>
-        {/* <div className="text-center mt-10 ml-3">
-          <Link
-            className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-            href="/login"
-          >
-            Iniciar sesion
-          </Link>
-          <Link
-            className="ml-2 flex-none rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
-            href="/register"
-          >
-            Registrarse
-          </Link>
-        </div> */}
+    <header className="header  ">
+      <div className="container mx-auto px-6 py-16 pt-28 text-center">
+        <div className="mx-auto max-w-lg">
+          <h1 className="text-3xl font-bold text-[#e9e9eb] dark:text-white md:text-4xl">
+            Potencia tu negocio!
+          </h1>
+
+          <p className="mt-6 text-[#e9e9eb] dark:text-gray-300">
+            En este espacio vibrante y lleno de posibilidades, estamos
+            comprometidos a impulsar tu éxito y hacer realidad tus aspiraciones
+            emprendedoras. Sabemos que cada idea, cada visión y cada sueño son
+            únicos, y estamos aquí para proporcionarte las herramientas, los
+            recursos y el apoyo necesario para convertirlos en realidad.
+          </p>
+
+          <div className="mx-auto mt-6 w-full max-w-sm ">
+            <Button color="default" variant="shadow" onClick={handleRedirect}>
+              Sobre Nosotros
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 

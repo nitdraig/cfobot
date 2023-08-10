@@ -61,13 +61,13 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="/about" aria-current="page">
+          <Link href="#about" aria-current="page">
             Nosotros
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="/info">
-            Ayuda y feedback
+          <Link color="foreground" href="#team">
+            Exp_ team
           </Link>
         </NavbarItem>
         <NavbarItem>
