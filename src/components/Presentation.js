@@ -1,4 +1,3 @@
-import ChatVisual from "@/app/principal/ChatVisual";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +7,7 @@ const Presentation = () => {
       <div className="text-center mt-5 ">
         <h2 className="text-xl">You´re in the jungle baby</h2>
         <p>Welcome Back</p>
-        <div className="text-center mt-10 ml-3">
+        {/* <div className="text-center mt-10 ml-3">
           <Link
             className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-indigo-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             href="/login"
@@ -21,7 +20,7 @@ const Presentation = () => {
           >
             Registrarse
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

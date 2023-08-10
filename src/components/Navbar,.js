@@ -1,48 +1,182 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Button,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@nextui-org/react";
 
-const Navbar = () => {
+export default function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("/login", { email, password });
+      // Aquí deberías manejar el token de autenticación
+      // Por ejemplo, si tienes una función setToken en un contexto global:
+      // setToken(response.data.token);
+      console.log("Inicio de sesión exitoso");
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
+  };
+
+  const menuItems = ["Inicio", "Nosotros", "Ayuda y feedback"];
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto flex flex-wrap justify-between items-center">
-        <h1 className="text-xl font-semibold mr-4">exp_v01</h1>
-        <button className="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400 hover:text-white hover:border-white md:hidden">
-          <svg
-            className="w-4 h-4 fill-current"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M3 9h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0-4a1 1 0 1 1 0-2h14a1 1 0 0 1 0 2H3zm0 8h14a1 1 0 1 1 0 2H3a1 1 0 0 1 0-2z"
-            />
-          </svg>
-        </button>
-        <ul className="hidden md:flex space-x-4">
-          <li>
-            <Link href="/" className="hover:text-gray-300">
-              Inicio
-            </Link>
-          </li>
-          <li>
-            <Link href="/principal" className="hover:text-gray-300">
-              CFOBot
-            </Link>
-          </li>
-          <li>
-            <a href="#" className="hover:text-gray-300">
-              Servicios
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-gray-300">
-              Contacto
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
-};
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-[#E1E0E070]">
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
+        <NavbarBrand>
+          {/* <img
+            style={{ width: "10%" }}
+            src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
+          /> */}
+          <p className="font-bold text-inherit">FER</p>
+        </NavbarBrand>
+      </NavbarContent>
 
-export default Navbar;
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="/">
+            Inicio
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive>
+          <Link href="/about" aria-current="page">
+            Nosotros
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/info">
+            Ayuda y feedback
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/principal">
+            FER-Chat
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Button onPress={onOpen}>Login</Button>
+
+          <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex flex-col gap-1">
+                    Modal Title
+                  </ModalHeader>
+                  <ModalBody>
+                    <div className="max-w-[280px] mx-auto">
+                      <div className="flex flex-col items-center mt-[10vh]">
+                        <h2 className="mb-5 text-gray-900  font-bold text-xl">
+                          Iniciar Sesión
+                        </h2>
+
+                        <form onSubmit={handleSubmit}>
+                          <input
+                            className="w-full px-6 py-3 mb-2 border border-slate-600 rounded-lg font-medium "
+                            type="email"
+                            placeholder="Correo electrónico"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                          />
+                          <input
+                            type="password"
+                            className="w-full px-6 py-3 mb-2 border border-slate-600 rounded-lg font-medium "
+                            placeholder="Contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                          />
+                        </form>
+                        <p className="text-center mt-3 text-[14px]">
+                          ¿No tienes cuenta? <br />
+                          <Link
+                            href="/register"
+                            onClick={onClose}
+                            className="text-gray-600"
+                          >
+                            Crea una Cuenta
+                          </Link>
+                        </p>
+                        <p className="text-center mt-3 text-[14px]">
+                          Al continuar confirmas que aceptas los términos y las
+                          politicas de privacidad
+                          <br />
+                          <Link
+                            href="/"
+                            onClick={onClose}
+                            className="text-gray-600"
+                          >
+                            Termis of Service
+                          </Link>{" "}
+                          and{" "}
+                          <Link
+                            href="/"
+                            onClick={onClose}
+                            className="text-gray-600"
+                          >
+                            Privacy Policy
+                          </Link>
+                        </p>
+                      </div>
+                    </div>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="danger" variant="light" onClick={onClose}>
+                      Close
+                    </Button>
+                    <Button color="primary" onPress={onClose}>
+                      Action
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarMenu>
+        {menuItems.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link
+              color={
+                index === 2
+                  ? "primary"
+                  : index === menuItems.length - 1
+                  ? "danger"
+                  : "foreground"
+              }
+              className="w-full"
+              href="#"
+              size="lg"
+            >
+              {item}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
+  );
+}

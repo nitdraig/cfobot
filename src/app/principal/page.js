@@ -99,6 +99,7 @@
 "use client";
 import React from "react";
 import ChatComponent from "./ChatComponent"; // Ajusta la ruta según la ubicación de ChatComponent
+import ChatVisual from "./ChatVisual";
 
 const Page = () => {
   return (
@@ -107,7 +108,6 @@ const Page = () => {
         Soy CFO Consulta lo que gustes
       </h2>{" "}
       <div className="container content-center">
-        {" "}
         <ChatComponent />
       </div>
     </main>
