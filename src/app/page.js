@@ -1,6 +1,7 @@
 import Presentation from "./../components/Presentation";
 import About from "./../components/About";
 import Team from "./../components/Team";
+import Contact from "./../components/Contact";
 export default function Home() {
   return (
     <div className="">
@@ -12,6 +13,9 @@ export default function Home() {
       </div>
       <div id="team">
         <Team />
+      </div>
+      <div id="contact">
+        <Contact />
       </div>
     </div>
   );

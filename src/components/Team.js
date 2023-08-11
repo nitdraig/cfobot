@@ -1,11 +1,10 @@
 import React from "react";
 import TeamCard from "./TeamCard";
-import { infoTeam } from "./InfoData";
 
 const Team = () => {
   return (
-    <section className="bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6 pt-28">
+    <section className="bg-[#f7f7f7] dark:bg-gray-900 lg:h-screen sm:h-[1800px] ">
+      <div className="container mx-auto px-6 pt-20">
         <h2 className="text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
           Nuestro Equipo
         </h2>

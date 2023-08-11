@@ -9,7 +9,7 @@ const TeamCard = () => {
       {infoTeam.map((team, i) => (
         <div
           key={i}
-          className="group flex transform cursor-pointer flex-col items-center rounded-xl p-8 transition-colors duration-300 hover:bg-slate-400"
+          className="group flex transform cursor-pointer flex-col items-center rounded-xl p-8 transition-colors duration-300 bg-[#e0e0e0] hover:bg-[#F31260]"
         >
           <img
             className="h-32 w-32 rounded-full object-cover ring-4 ring-gray-300"

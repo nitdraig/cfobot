@@ -2,26 +2,30 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
+import Image from "next/image";
 const About = () => {
   const router = useRouter();
 
-  const handleRedirect = () => {
-    router.push("/iniciar"); // Reemplaza con la ruta correcta de tu componente destino
+  const handleRedirect1 = () => {
+    router.push("/info"); // Reemplaza con la ruta correcta de tu componente destino
   };
-
+  const handleRedirect2 = () => {
+    router.push("#contact"); // Reemplaza con la ruta correcta de tu componente destino
+  };
   return (
-    <section class="relative bg-[#e1e1e9] pt-16 bg-blueGray-50">
-      <div className="text-center">
-        <h2 className="text-[3em]">Nosotros</h2>
+    <section class="relative bg-[#e1e1e9]  pt-10 bg-blueGray-50">
+      <div className="text-center p-6">
+        <h2 className=" text-[3em] ">Nosotros</h2>
       </div>
 
       <div class="container mx-auto">
         <div class="flex flex-wrap items-center">
           <div class="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-[#1C2631]">
-              <img
+            <div class="relative flex flex-col min-w-0 break-words  mb-6 shadow-lg rounded-lg bg-[#1C2631] hover:bg-[#274b72]">
+              <Image
                 alt="..."
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80"
+                isZoomed
+                href="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80"
                 class="w-full align-middle rounded-t-lg"
               />
               <blockquote class="relative p-8 mb-4">
@@ -49,7 +53,11 @@ const About = () => {
                       objetivos y logres el éxito con tu proyecto.
                     </p>
                   </div>
-                  <Button color="danger" variant="ghost">
+                  <Button
+                    onClick={handleRedirect1}
+                    color="danger"
+                    variant="ghost"
+                  >
                     Ver más
                   </Button>
                 </div>
@@ -79,7 +87,11 @@ const About = () => {
                       forma parte de nuestra comunidad
                     </p>
                   </div>
-                  <Button color="danger" variant="ghost">
+                  <Button
+                    onClick={handleRedirect2}
+                    color="danger"
+                    variant="ghost"
+                  >
                     Ver más
                   </Button>
                 </div>

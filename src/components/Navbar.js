@@ -60,17 +60,23 @@ export default function NavBar() {
             Inicio
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#about" aria-current="page">
+        <NavbarItem>
+          <Link href="/#about" aria-current="page">
             Nosotros
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#team">
+          <Link color="foreground" href="/#team">
             Exp_ team
           </Link>
         </NavbarItem>
+
         <NavbarItem>
+          <Link color="foreground" href="/#contact">
+            Contacto
+          </Link>
+        </NavbarItem>
+        <NavbarItem isActive>
           <Link color="foreground" href="/principal">
             FER-Chat
           </Link>
@@ -78,14 +84,16 @@ export default function NavBar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Button onPress={onOpen}>Login</Button>
+          <Button className="hover:bg-[#F31260] " onPress={onOpen}>
+            Login
+          </Button>
 
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>
               {(onClose) => (
                 <>
                   <ModalHeader className="flex flex-col gap-1">
-                    Modal Title
+                    Bienvenido de vuelta
                   </ModalHeader>
                   <ModalBody>
                     <div className="max-w-[280px] mx-auto">
@@ -144,10 +152,19 @@ export default function NavBar() {
                     </div>
                   </ModalBody>
                   <ModalFooter>
-                    <Button color="danger" variant="light" onClick={onClose}>
+                    <Button
+                      color="danger"
+                      className="hover:text-[#000000]"
+                      variant="light"
+                      onClick={onClose}
+                    >
                       Close
                     </Button>
-                    <Button color="primary" onPress={onClose}>
+                    <Button
+                      color="primary"
+                      className="hover:bg-[#5870f8] hover:text-[#000000] "
+                      onPress={onClose}
+                    >
                       Action
                     </Button>
                   </ModalFooter>
