@@ -2,19 +2,19 @@ export const infoTeam = [
   {
     Name: "Pablo Vegvarel",
 
-    TeamJob: "DETOI",
+    TeamJob: "CEO",
     TeamImg:
-      "https://res.cloudinary.com/dcu06etml/image/upload/v1688835318/profile-pic_2_pxpzfg.png",
-    SocialmediaOne: "",
-    SocialmediaTwo: "",
-    SocialmediaThree: "",
+      "https://res.cloudinary.com/dcu06etml/image/upload/v1691789971/draig-page/examples/y0i2elhu5r7d10f4ot4m.webp",
+    SocialmediaOne: "https://x.com/",
+    SocialmediaTwo: "https://google.com",
+    SocialmediaThree: "https://www.linkedin.com/",
   },
   {
     Name: "Avellaneda Agustín ",
 
     TeamJob: "DETOI",
     TeamImg:
-      "https://res.cloudinary.com/dcu06etml/image/upload/v1688835318/profile-pic_2_pxpzfg.png",
+      "https://res.cloudinary.com/dcu06etml/image/upload/v1691789985/draig-page/examples/n8ehlofzvooxe88tgfnh.webp",
     SocialmediaOne: "https://x.com/nitdraig",
     SocialmediaTwo: "https://agustin.top/",
 
@@ -25,21 +25,21 @@ export const infoTeam = [
   {
     Name: "Francisco Vega",
 
-    TeamJob: "DETOI",
+    TeamJob: "UX/UI Engineer",
     TeamImg:
-      "https://res.cloudinary.com/dcu06etml/image/upload/v1688835318/profile-pic_2_pxpzfg.png",
-    SocialmediaOne: "",
-    SocialmediaTwo: "",
-    SocialmediaThree: "",
+      "https://res.cloudinary.com/dcu06etml/image/upload/v1691789978/draig-page/examples/sdtk5u0m7d4fckiwbzgl.webp",
+    SocialmediaOne: "https://x.com/",
+    SocialmediaTwo: "https://google.com",
+    SocialmediaThree: "https://www.linkedin.com/",
   },
   {
     Name: "Ana Romero",
 
-    TeamJob: "DETOI",
+    TeamJob: "Front-End Engineer",
     TeamImg:
-      "https://res.cloudinary.com/dcu06etml/image/upload/v1688835318/profile-pic_2_pxpzfg.png",
-    SocialmediaOne: "",
-    SocialmediaTwo: "",
-    SocialmediaThree: "",
+      "https://res.cloudinary.com/dcu06etml/image/upload/v1691789973/draig-page/examples/gie2hf1lzsimoejmadvx.webp",
+    SocialmediaOne: "https://x.com/",
+    SocialmediaTwo: "https://google.com",
+    SocialmediaThree: "https://www.linkedin.com/",
   },
 ];
