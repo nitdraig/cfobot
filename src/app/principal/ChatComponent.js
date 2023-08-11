@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Image } from "@nextui-org/react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ChatComponent = () => {
   const [consulta, setConsulta] = useState("");
@@ -14,6 +16,9 @@ const ChatComponent = () => {
     // Perform localStorage action
     const item = localStorage.getItem("key");
   }
+  useEffect(() => {
+    AOS.init();
+  }, []);
   useEffect(() => {
     // Almacenar la conversación en localStorage cada vez que cambie
     localStorage.setItem("conversacion", JSON.stringify(conversacion));
@@ -72,7 +77,10 @@ const ChatComponent = () => {
   }, [conversacion]);
   return (
     <div className="flex h-screen antialiased text-gray-800">
-      <div className="flex flex-row h-full w-full overflow-x-hidden">
+      <div
+        data-aos="fade-up"
+        className="flex flex-row h-full w-full overflow-x-hidden"
+      >
         <div className="hidden md:flex flex-col py-8 pl-6 pr-2 w-64 bg-white flex-shrink-0">
           <div className="flex flex-row items-center justify-center h-12 w-full">
             <div className="flex items-center justify-center rounded-2xl text-indigo-700 bg-indigo-100 h-10 w-10">
