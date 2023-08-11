@@ -1,10 +1,9 @@
-"use client";
 import React from "react";
 import ChatComponent from "./ChatComponent";
 
 const page = () => {
   return (
-    <div className="container">
+    <div>
       <ChatComponent />
     </div>
   );
