@@ -51,8 +51,11 @@ const About = () => {
               <div className="w-full md:w-6/12 px-4">
                 <div className="relative flex flex-col mt-4">
                   <div data-aos="flip-right" className="px-4 py-5 flex-auto">
-                    <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <i className="fas fa-sitemap"></i>
+                    <div className="p-3 inline-flex  mb-5   rounded-full ">
+                      <img
+                        src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
+                        className=" text-center items-center justify-center w-10 h-10  rounded-full   "
+                      />
                     </div>
                     <h6 className="text-xl mb-1 font-semibold">
                       Nuestra visión
@@ -74,9 +77,13 @@ const About = () => {
               <div className="w-full md:w-6/12 px-4">
                 <div className="relative flex flex-col min-w-0 mt-4">
                   <div data-aos="flip-right" className="px-4 py-5 flex-auto">
-                    <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                      <i className="fas fa-newspaper"></i>
+                    <div className=" p-3 inline-flex  mb-5   rounded-full ">
+                      <img
+                        src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
+                        className=" text-center items-center justify-center w-10 h-10  rounded-full   "
+                      />
                     </div>
+
                     <h6 className="text-xl mb-1 font-semibold">
                       Únete a nosotros
                     </h6>

@@ -46,7 +46,7 @@ export default function NavBar() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <p className="font-bold text-inherit">FER</p>
+          <p className="font-bold text-inherit">exp_</p>
         </NavbarBrand>
       </NavbarContent>
 
@@ -74,7 +74,7 @@ export default function NavBar() {
         </NavbarItem>
         <NavbarItem isActive>
           <Link color="foreground" href="/principal">
-            FER-Chat
+            FER-Bot
           </Link>
         </NavbarItem>
       </NavbarContent>
