@@ -46,10 +46,6 @@ export default function NavBar() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          {/* <img
-            style={{ width: "10%" }}
-            src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
-          /> */}
           <p className="font-bold text-inherit">FER</p>
         </NavbarBrand>
       </NavbarContent>

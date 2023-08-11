@@ -8,7 +8,7 @@ const Team = () => {
     AOS.init();
   }, []);
   return (
-    <section className="bg-[#f7f7f7] dark:bg-gray-900 lg:h-screen sm:h-[1800px] ">
+    <section className="bg-[#f7f7f7] dark:bg-gray-900 lg:h-screen md:h-[1000px] sm:h-[1600px] ">
       <div data-aos="zoom-in" className="container mx-auto px-6 pt-20">
         <h2 className="text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
           Nuestro Equipo
