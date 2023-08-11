@@ -11,7 +11,11 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import { useEffect } from "react";
 const Contact = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   async function handleSubmit(event) {
     event.preventDefault();
@@ -35,9 +39,10 @@ const Contact = () => {
       console.log(result);
     }
   }
+
   return (
     <div className="flex min-h-screen items-center justify-start bg-[#e1e1e9]">
-      <div data-aos="fade-down-right" className="  mx-auto w-full   max-w-lg">
+      <div data-aos="fade-up-right" className="mx-auto w-full max-w-lg">
         <h2 className="text-4xl font-medium">Contactanos</h2>
         <p className="mt-3">
           Cuentanos quién eres, y por qué quieres formar parte de Exp_

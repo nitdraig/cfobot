@@ -1,15 +1,21 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { infoTeam } from "./InfoData";
 import { Image, Link } from "@nextui-org/react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 const TeamCard = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:mt-16 xl:grid-cols-4">
       {infoTeam.map((team, i) => (
         <div
-          data-aos="flip-left"
+          data-aos="flip-right"
+          data-aos-offset="200"
+          data-aos-easing="ease-in-sine"
           key={i}
           className="group flex transform cursor-pointer flex-col items-center rounded-xl p-8 transition-colors duration-300 bg-[#e0e0e0] hover:bg-[#F31260]"
         >

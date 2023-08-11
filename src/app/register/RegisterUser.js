@@ -1,6 +1,10 @@
-import Link from "next/link";
+"use client";
+
 import React, { useState } from "react";
 import axios from "axios"; // Asegúrate de importar axios
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 export const RegisterUser = () => {
   const [username, setUsername] = useState("");
@@ -21,12 +25,16 @@ export const RegisterUser = () => {
       console.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <div className="max-w-[280px] mx-auto">
+    <div data-aos="flip-right" className="max-w-[280px] mx-auto">
       <div className="flex flex-col items-center mt-[10vh]">
         <h2 className="mb-5 text-gray-900  font-bold text-xl">Registrate</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form data-aos="flip-up" data-aos-offset="300" onSubmit={handleSubmit}>
           <input
             type="text"
             className="w-full px-6 py-3 mb-2 border border-slate-600 rounded-lg font-medium "
@@ -61,12 +69,7 @@ export const RegisterUser = () => {
             Registrate
           </button>
         </form>
-        <p className="text-center mt-3 text-[14px]">
-          ¿Ya tienes cuenta? <br />
-          <Link href="/login" className="text-gray-600">
-            Iniciar Sesión
-          </Link>
-        </p>
+
         <p className="text-center mt-3 text-[14px]">
           Al registrarte confirmas que leíste los términos y la politica de
           privacidad

@@ -85,7 +85,7 @@ export default function NavBar() {
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           <Button className="hover:bg-[#F31260] " onPress={onOpen}>
-            Login
+            Iniciar sesión
           </Button>
 
           <Modal isOpen={isOpen} onOpenChange={onOpenChange}>

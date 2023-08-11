@@ -1,11 +1,14 @@
 "use client";
 import React from "react";
 import ChatComponent from "./ChatComponent"; // Ajusta la ruta según la ubicación de ChatComponent
-
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Page = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <main className="container">
       <div data-aos="fade-up" className="container ">

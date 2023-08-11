@@ -1,21 +1,26 @@
 "use client";
 
 import React from "react";
-import { Button } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 const Presentation = () => {
   const router = useRouter();
 
   const handleRedirect = () => {
     router.push("#about"); // Reemplaza con la ruta correcta de tu componente destino
   };
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <header className="header ">
+    <header className="header">
       <div
-        className=" header-content container mx-auto px-6 py-16 pt-28 text-center"
-        data-aos="zoom-in"
+        data-aos="zoom-out-right"
+        className="header-content container mx-auto px-6 py-16 pt-28 text-center"
       >
         <div className="mx-auto max-w-lg">
           <h2 className="text-3xl font-bold text-[#e9e9eb] dark:text-white md:text-4xl">

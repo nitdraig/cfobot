@@ -1,10 +1,15 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import TeamCard from "./TeamCard";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Team = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section className="bg-[#f7f7f7] dark:bg-gray-900 lg:h-screen sm:h-[1800px] ">
-      <div className="container mx-auto px-6 pt-20">
+      <div data-aos="zoom-in" className="container mx-auto px-6 pt-20">
         <h2 className="text-3xl font-semibold capitalize text-gray-800 dark:text-white lg:text-4xl">
           Nuestro Equipo
         </h2>
