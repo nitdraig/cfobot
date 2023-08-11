@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Image } from "@nextui-org/react";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
 const ChatComponent = () => {
   const [consulta, setConsulta] = useState("");
   const [respuesta, setRespuesta] = useState("");

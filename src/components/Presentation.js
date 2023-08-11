@@ -3,6 +3,8 @@
 import React from "react";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const Presentation = () => {
   const router = useRouter();
 
@@ -11,7 +13,10 @@ const Presentation = () => {
   };
   return (
     <header className="header ">
-      <div className=" header-content container mx-auto px-6 py-16 pt-28 text-center">
+      <div
+        className=" header-content container mx-auto px-6 py-16 pt-28 text-center"
+        data-aos="zoom-in"
+      >
         <div className="mx-auto max-w-lg">
           <h2 className="text-3xl font-bold text-[#e9e9eb] dark:text-white md:text-4xl">
             Potencia tus ideas
@@ -33,7 +38,7 @@ const Presentation = () => {
               onClick={handleRedirect}
             >
               Sobre Nosotros
-            </Button>
+            </Button>{" "}
           </div>
         </div>
       </div>
