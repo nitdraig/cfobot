@@ -8,22 +8,36 @@ import "aos/dist/aos.css";
 const ChatComponent = () => {
   const [consulta, setConsulta] = useState("");
   const [respuesta, setRespuesta] = useState("");
-  const [conversacion, setConversacion] = useState(
-    JSON.parse(localStorage.getItem("conversacion")) || []
-  );
+
   const conversacionRef = useRef(null);
-  if (typeof window !== "undefined") {
-    // Perform localStorage action
-    const item = localStorage.getItem("key");
-  }
+
+  const [conversacion, setConversacion] = useState([]);
+  const [interacciones, setInteracciones] = useState([]);
+
+  useEffect(() => {
+    // Consultar la API para obtener las interacciones desde tu backend en Express
+    axios
+      .get(
+        "https://cfobot-be-d7t9-dev.fl0.io/interacciones/obtenerinteracciones"
+      )
+      .then((response) => {
+        setInteracciones(response.data);
+      })
+      .catch((error) => {
+        console.error("Error al obtener interacciones:", error);
+      });
+  }, []);
+  useEffect(() => {
+    // Almacenar la conversación en sessionStorage cada vez que cambie
+    sessionStorage.setItem("conversacion", JSON.stringify(conversacion));
+  }, [conversacion]);
+
+  const borrarConversacion = () => {
+    setConversacion([]);
+  };
   useEffect(() => {
     AOS.init();
   }, []);
-  useEffect(() => {
-    // Almacenar la conversación en localStorage cada vez que cambie
-    localStorage.setItem("conversacion", JSON.stringify(conversacion));
-  }, [conversacion]);
-
   const enviarConsulta = async (e) => {
     e.preventDefault();
     try {
@@ -46,7 +60,6 @@ const ChatComponent = () => {
         { role: "bot", content: generatedResponse },
       ];
       setConversacion(conversacionConRespuesta);
-
       setRespuesta(generatedResponse);
       setConsulta("");
       // Guardar interacción en la base de datos
@@ -61,11 +74,6 @@ const ChatComponent = () => {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const borrarConversacion = () => {
-    setConversacion([]);
-    setRespuesta("");
   };
 
   useEffect(() => {
@@ -136,6 +144,55 @@ const ChatComponent = () => {
                 ref={conversacionRef}
                 className="flex flex-col h-full overflow-y-auto"
               >
+                {/* mapeo de interacciones */}
+                {interacciones.map((mensaje, i) => (
+                  <div
+                    key={i}
+                    className="grid lg:grid-cols-12 sm:grid-cols-1 gap-y-2"
+                  >
+                    {mensaje.role === "user" && (
+                      <div className="col-start-6 col-end-13 p-3 rounded-lg">
+                        <div className="flex items-center justify-start flex-row-reverse">
+                          <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
+                            You
+                          </div>
+                          <div className="relative mr-3 text-sm bg-indigo-300 py-2 px-4 shadow rounded-xl">
+                            <div
+                              className={`${
+                                mensaje.role === "user"
+                                  ? "flex justify-end"
+                                  : "flex justify-start"
+                              }`}
+                            >
+                              <div
+                                className={`${
+                                  mensaje.role === "user" ? "p-2 max-w-md" : ""
+                                }`}
+                              >
+                                <p>{mensaje.contentUser}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="col-start-1 col-end-8 p-3 rounded-lg"></div>
+                    {mensaje.role === "user" && (
+                      <div className="col-start-1  col-end-8  p-3 rounded-lg">
+                        <div className="flex flex-row items-center">
+                          <div className="flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0">
+                            CFO
+                          </div>
+                          <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
+                            <p>{mensaje.contentBot}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {/* mapeo presente */}
                 {conversacion.map((mensaje, index) => (
                   <div
                     key={index}
@@ -211,13 +268,13 @@ const ChatComponent = () => {
                   </button>
                 </div>
                 <div className="ml-4 mt-1 text-center content-center">
-                  <button
+                  {/* <button
                     type="button"
                     onClick={borrarConversacion}
                     className="flex items-center justify-center bg-red-700 hover:bg-red-400 rounded-xl text-white px-3 py-1 flex-shrink-0"
                   >
                     <span>Limpiar</span>
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
