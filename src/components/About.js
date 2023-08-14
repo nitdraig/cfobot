@@ -20,9 +20,8 @@ const About = () => {
   return (
     <section className="relative bg-[#e1e1e9]   pt-10 bg-blueGray-50">
       <div className="text-center p-6">
-        <h2 className=" text-[3em]">Nosotros</h2>
+        <h2 className="text-[3em]">Nosotros</h2>
       </div>
-
       <div data-aos="fade-down-right" className="container mx-auto">
         <div className="flex flex-wrap items-center">
           <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto -mt-78">

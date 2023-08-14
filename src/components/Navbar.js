@@ -159,9 +159,9 @@ export default function NavBar() {
                     <Button
                       color="primary"
                       className="hover:bg-[#5870f8] hover:text-[#000000] "
-                      onPress={onClose}
+                      onSubmit={handleSubmit}
                     >
-                      Action
+                      Iniciar sesión
                     </Button>
                   </ModalFooter>
                 </>
