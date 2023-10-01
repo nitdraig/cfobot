@@ -13,11 +13,14 @@ const ChatComponent = () => {
 
   const [conversacion, setConversacion] = useState([]);
   const [interacciones, setInteracciones] = useState([]);
+  const URLAPI = "https://cfobot-be-d7t9-dev.fl0.io/";
 
   useEffect(() => {
     // Consultar la API para obtener las interacciones desde tu backend en Express
     axios
-      .get("http://localhost:5000/interacciones/obtenerinteracciones")
+      .get(
+        "https://cfobot-be-d7t9-dev.fl0.io/interacciones/obtenerinteracciones"
+      )
       .then((response) => {
         setInteracciones(response.data);
       })
@@ -45,9 +48,12 @@ const ChatComponent = () => {
       ];
       setConversacion(nuevaConversacion);
 
-      const response = await axios.post("http://localhost:5000/bot/consulta", {
-        message: consulta,
-      });
+      const response = await axios.post(
+        "https://cfobot-be-d7t9-dev.fl0.io/bot/consulta",
+        {
+          message: consulta,
+        }
+      );
 
       console.log("Respuesta del servidor:", response.data); // Agregar este registro
 
@@ -61,11 +67,14 @@ const ChatComponent = () => {
       setRespuesta(generatedResponse);
       setConsulta("");
       // Guardar interacción en la base de datos
-      await axios.post("http://localhost:5000/interacciones/nuevainteraccion", {
-        role: "user",
-        contentUser: consulta,
-        contentBot: generatedResponse,
-      });
+      await axios.post(
+        "https://cfobot-be-d7t9-dev.fl0.io/interacciones/nuevainteraccion",
+        {
+          role: "user",
+          contentUser: consulta,
+          contentBot: generatedResponse,
+        }
+      );
     } catch (error) {
       console.error(error);
     }
