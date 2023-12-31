@@ -13,12 +13,12 @@ const ChatComponent = () => {
 
   const [conversacion, setConversacion] = useState([]);
   const [interacciones, setInteracciones] = useState([]);
-  const URLAPI = "http://localhost:5000/";
+  const URLAPI = "https://cfobot-be.vercel.app/";
 
   useEffect(() => {
     // Consultar la API para obtener las interacciones desde tu backend en Express
     axios
-      .get("http://localhost:5000/interacciones/obtenerinteracciones")
+      .get(`${URLAPI}interacciones/obtenerinteracciones`)
       .then((response) => {
         setInteracciones(response.data);
       })
@@ -46,7 +46,7 @@ const ChatComponent = () => {
       ];
       setConversacion(nuevaConversacion);
 
-      const response = await axios.post("http://localhost:5000/bot/consulta", {
+      const response = await axios.post(`${URLAPI}bot/consulta`, {
         message: consulta,
       });
 
@@ -62,7 +62,7 @@ const ChatComponent = () => {
       setRespuesta(generatedResponse);
       setConsulta("");
       // Guardar interacción en la base de datos
-      await axios.post("http://localhost:5000/interacciones/nuevainteraccion", {
+      await axios.post(`${URLAPI}interacciones/nuevainteraccion`, {
         role: "user",
         contentUser: consulta,
         contentBot: generatedResponse,
@@ -77,7 +77,7 @@ const ChatComponent = () => {
     const conversacionElement = conversacionRef.current;
 
     // Hacer el desplazamiento automático hacia abajo
-    conversacionElement.scrollTop = conversacionElement.scrollHeight;
+    conversacionElement.scrollBot = conversacionElement.scrollHeight;
   }, [conversacion]);
   return (
     <div className="flex h-screen antialiased text-gray-800">
