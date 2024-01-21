@@ -28,9 +28,7 @@ export default function NavBar() {
     e.preventDefault();
     try {
       const response = await axios.post("/login", { email, password });
-      // Aquí deberías manejar el token de autenticación
-      // Por ejemplo, si tienes una función setToken en un contexto global:
-      // setToken(response.data.token);
+
       console.log("Inicio de sesión exitoso");
     } catch (error) {
       console.error(error.response.data.message);

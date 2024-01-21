@@ -58,7 +58,7 @@ const TeamCard = () => {
                 className="h-6 w-6 fill-current mt-[-1px]"
                 width="35"
                 height="35"
-                src="https://res.cloudinary.com/dcu06etml/image/upload/v1691695341/Icons/ax48ah4mqwf7myl7ddbl.svg"
+                src="https://res.cloudinary.com/draig/image/upload/v1691695341/Icons/ax48ah4mqwf7myl7ddbl.svg"
               />
             </Link>
 
@@ -72,7 +72,7 @@ const TeamCard = () => {
                 className="h-6 w-6 fill-current mt-[-1px]"
                 width="35"
                 height="35"
-                src="https://res.cloudinary.com/dcu06etml/image/upload/v1691695329/Icons/ipaeehj8lm3jyzvi5sfp.svg"
+                src="https://res.cloudinary.com/draig/image/upload/v1691695329/Icons/ipaeehj8lm3jyzvi5sfp.svg"
               />
             </Link>
           </div>

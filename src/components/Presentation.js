@@ -11,7 +11,7 @@ const Presentation = () => {
   const router = useRouter();
 
   const handleRedirect = () => {
-    router.push("#about"); // Reemplaza con la ruta correcta de tu componente destino
+    router.push("#about");
   };
   useEffect(() => {
     AOS.init();
@@ -43,7 +43,7 @@ const Presentation = () => {
               onClick={handleRedirect}
             >
               Sobre Nosotros
-            </Button>{" "}
+            </Button>
           </div>
         </div>
       </div>

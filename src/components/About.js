@@ -31,7 +31,7 @@ const About = () => {
             >
               <img
                 alt="..."
-                src="https://res.cloudinary.com/dcu06etml/image/upload/v1691717690/skwkggtv7xvcnsogzvpu.webp"
+                src="https://res.cloudinary.com/draig/image/upload/v1691717690/skwkggtv7xvcnsogzvpu.webp"
                 className="w-full align-middle rounded-t-lg"
               />
               <blockquote className="relative p-8 mb-4">
@@ -52,7 +52,7 @@ const About = () => {
                   <div data-aos="flip-right" className="px-4 py-5 flex-auto">
                     <div className="p-3 inline-flex  mb-5   rounded-full ">
                       <img
-                        src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
+                        src="https://res.cloudinary.com/draig/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
                         className=" text-center items-center justify-center w-10 h-10  rounded-full   "
                       />
                     </div>
@@ -78,7 +78,7 @@ const About = () => {
                   <div data-aos="flip-right" className="px-4 py-5 flex-auto">
                     <div className=" p-3 inline-flex  mb-5   rounded-full ">
                       <img
-                        src="https://res.cloudinary.com/dcu06etml/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
+                        src="https://res.cloudinary.com/draig/image/upload/v1691628903/EXP_/FER/d5yg0pkacywvqdmgna52.png"
                         className=" text-center items-center justify-center w-10 h-10  rounded-full   "
                       />
                     </div>
