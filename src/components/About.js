@@ -9,10 +9,10 @@ const About = () => {
   const router = useRouter();
 
   const handleRedirect1 = () => {
-    router.push("/info"); // Reemplaza con la ruta correcta de tu componente destino
+    router.push("/info");
   };
   const handleRedirect2 = () => {
-    router.push("#contact"); // Reemplaza con la ruta correcta de tu componente destino
+    router.push("#contact");
   };
   useEffect(() => {
     AOS.init();

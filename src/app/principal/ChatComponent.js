@@ -16,7 +16,6 @@ const ChatComponent = () => {
   const URLAPI = "https://cfobot-be.vercel.app/";
 
   useEffect(() => {
-    // Consultar la API para obtener las interacciones desde tu backend en Express
     axios
       .get(`${URLAPI}interacciones/obtenerinteracciones`)
       .then((response) => {
@@ -27,7 +26,6 @@ const ChatComponent = () => {
       });
   }, []);
   useEffect(() => {
-    // Almacenar la conversación en sessionStorage cada vez que cambie
     sessionStorage.setItem("conversacion", JSON.stringify(conversacion));
   }, [conversacion]);
 
@@ -50,7 +48,7 @@ const ChatComponent = () => {
         message: consulta,
       });
 
-      console.log("Respuesta del servidor:", response.data); // Agregar este registro
+      console.log("Respuesta del servidor:", response.data);
 
       const generatedResponse = response.data.generatedResponse;
 
@@ -61,7 +59,6 @@ const ChatComponent = () => {
       setConversacion(conversacionConRespuesta);
       setRespuesta(generatedResponse);
       setConsulta("");
-      // Guardar interacción en la base de datos
       await axios.post(`${URLAPI}interacciones/nuevainteraccion`, {
         role: "user",
         contentUser: consulta,
@@ -73,10 +70,8 @@ const ChatComponent = () => {
   };
 
   useEffect(() => {
-    // Obtener el elemento de conversación utilizando la referencia
     const conversacionElement = conversacionRef.current;
 
-    // Hacer el desplazamiento automático hacia abajo
     conversacionElement.scrollBot = conversacionElement.scrollHeight;
   }, [conversacion]);
   return (
@@ -140,7 +135,6 @@ const ChatComponent = () => {
                 ref={conversacionRef}
                 className="flex flex-col h-full overflow-y-auto"
               >
-                {/* mapeo de interacciones */}
                 {interacciones.map((mensaje, i) => (
                   <div
                     key={i}
@@ -188,7 +182,7 @@ const ChatComponent = () => {
                     )}
                   </div>
                 ))}
-                {/* mapeo presente */}
+
                 {conversacion.map((mensaje, index) => (
                   <div
                     key={index}

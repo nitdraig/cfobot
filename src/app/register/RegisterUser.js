@@ -1,7 +1,6 @@
 "use client";
-
 import React, { useState } from "react";
-import axios from "axios"; // Asegúrate de importar axios
+import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -19,8 +18,6 @@ export const RegisterUser = () => {
         email,
         password,
       });
-      console.log("Registro exitoso");
-      // Puedes redirigir al usuario a la página de inicio de sesión u otra página aquí
     } catch (error) {
       console.error(error.response.data.message);
     }
