@@ -18,9 +18,6 @@ export const metadata = {
     "avellaneda",
     "front-end",
     "back-end",
-    "testing",
-    "liderazgo",
-    "ágil",
   ],
 
   twitter: {
@@ -45,7 +42,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body suppressHydrationWarning={true} className={noto.className}>
+      <body className={noto.className}>
         <NavBar />
         {children}
         <Footer />
