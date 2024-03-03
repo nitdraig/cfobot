@@ -17,7 +17,7 @@ const About = () => {
   return (
     <section className=" bg-[#e1e1e9] " id="about">
       <div className="text-center  ">
-        <h2 className="text-3xl pt-10">Sobre FER</h2>
+        <h2 className="text-3xl pt-10 mb-10">Sobre FER</h2>
       </div>
       <div data-aos="fade-down-right" className=" mx-auto">
         <div className="flex flex-wrap items-center">
@@ -82,10 +82,10 @@ const About = () => {
               <div>
                 <button
                   onClick={handleRedirect}
-                  class="group relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow"
+                  className="group relative h-12 w-48 overflow-hidden rounded-lg bg-white text-lg shadow"
                 >
-                  <div class="absolute inset-0 w-3 bg-[#274b72] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-                  <span class="relative text-black group-hover:text-white">
+                  <div className="absolute inset-0 w-3 bg-[#274b72] transition-all duration-[250ms] ease-out group-hover:w-full"></div>
+                  <span className="relative text-black group-hover:text-white">
                     Empezar a usar FER
                   </span>
                 </button>

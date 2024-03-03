@@ -15,7 +15,7 @@ const Hero = () => {
     AOS.init();
   }, []);
   return (
-    <section className="header w-screen h-full">
+    <section className="header w-screen lg:h-screen h-full">
       <div
         data-aos="zoom-out-right"
         className="header-content  lg:mx-auto mx-2 px-6 py-16  text-center"
@@ -40,10 +40,10 @@ const Hero = () => {
             <div className="mx-auto mt-14 w-full max-w-sm ">
               <button
                 onClick={handleRedirect}
-                class="group relative h-12 w-48 overflow-hidden rounded-2xl bg-[#f3f3f3] text-lg font-bold text-black hover:bg-[#274b72] hover:text-white"
+                className="group relative h-12 w-48 overflow-hidden rounded-2xl bg-[#f3f3f3] text-lg font-bold text-black hover:bg-[#274b72] hover:text-white"
               >
                 Sobre FER
-                <div class="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-{#274b72}"></div>
+                <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-{#274b72}"></div>
               </button>
             </div>
           </div>
