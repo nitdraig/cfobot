@@ -2,18 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Quicksand:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300&display=swap");
-
 * {
-  font-family: "Zen Kaku Gothic New", sans-serif;
+  box-sizing: border-box;
+  position: relative;
+  min-width: 0;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
 }
+html {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+body {
+  min-height: 100dvh;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+::-webkit-scrollbar {
+  width: 14px;
+  scrollbar-color: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background: #707070;
+  border-radius: 10px;
+}
+
+::selection {
+  color: white;
+  background: #000000;
+}
+
 .header {
   background-attachment: fixed;
-  height: 600px;
   background-size: cover;
   background-position: center;
-  --opacidad-negro: 0.4;
+  --opacidad-negro: 0.7;
   background-image: linear-gradient(
       rgba(0, 0, 0, var(--opacidad-negro)),
       rgba(0, 0, 0, var(--opacidad-negro))
