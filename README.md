@@ -1,6 +1,7 @@
 # FER-CFO | Excelso Simple Consulter
 ## This is a website to provide consultations as a CFO expert in Spanish
 
-### Made with Next.js, Javascript, Tailwind, Google Gemini for IA, MongoDB and Express to Back-end Consulting.
+**- Front-end: Next.js, Javascript, Tailwind & Mailprex to send emails from forms.**
+**- Back-end: Express, MongoDB & Google Gemini for IA consulting.**
 
 

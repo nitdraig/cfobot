@@ -29,7 +29,8 @@ const Contact = () => {
     e.preventDefault();
     if (!isValidEmail(formData.email)) {
       Swal.fire({
-        title: "Invalid email format. Please use a valid email address.",
+        title:
+          "Formato de correo inválido. Por favor utilice una dirección de correo electrónico válida.",
         icon: "error",
       });
       return;
@@ -37,11 +38,11 @@ const Contact = () => {
     await handleSubmit(e);
     if (response.error) {
       Swal.fire({
-        title: "Error sending message. Try again later.",
+        title: "Error al enviar el mensaje. Vuelve a intentarlo más tarde.",
         icon: "error",
       });
     } else {
-      Swal.fire({ title: "Message sent successfully!", icon: "success" });
+      Swal.fire({ title: "¡Mensaje enviado con éxito!", icon: "success" });
     }
   };
 
@@ -77,7 +78,7 @@ const Contact = () => {
                 placeholder=" "
               />
               <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-accent duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-accent ">
-                Your FullName
+                Tu nombre completo
               </label>
             </div>
             <div className="relative z-0">
@@ -91,7 +92,7 @@ const Contact = () => {
                 placeholder=" "
               />
               <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-accent duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-accent ">
-                Your email
+                Tu email
               </label>
             </div>
             <div className="relative z-0 col-span-2">
@@ -108,7 +109,7 @@ const Contact = () => {
                 htmlFor="message"
                 className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-accent duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-accent "
               >
-                Your message
+                Tu mensaje
               </label>
             </div>
           </div>
@@ -116,7 +117,7 @@ const Contact = () => {
             type="submit"
             className="mt-5 rounded-md bg-black px-10 py-2 text-white"
           >
-            Send Message
+            Enviar mensaje
           </button>
         </form>
       </div>
